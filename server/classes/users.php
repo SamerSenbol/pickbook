@@ -35,7 +35,8 @@ class User{
     
 
     public function register(){
-        $users_id=$this->users_id;
+        //$users_id=$this->users_id;
+        $con=new pdoConnection(); 
         $fulName=$this->fulName;
         $IsAdmin=0;
         $email=$this->email;
@@ -47,10 +48,9 @@ class User{
         $country=$this->country;
         $Password=$this->Password;
         $is_news_letter=$this->is_news_letter;
-        $Password=hash('ripemd160', $Password);
-        $con=new pdoConnection();     
+        $Password=hash('ripemd160', $Password);    
         $sql="INSERT INTO `users` (`fulName`,`IsAdmin`,`email`,`phone`,`adress`,`postNu`,`ZIPcode`,`city`,`country`,`Password`,`is_news_letter`) VALUES ('$fulName','$IsAdmin','$email','$phone','$adress','$postNu','$ZIPcode','$city','$country','$Password','$is_news_letter')";
-        $result=$con->crudeQuery($sql);
+        $result=$con->execQuery($sql);
     }
 
     

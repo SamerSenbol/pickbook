@@ -5,7 +5,7 @@ class pdoConnection{
     private $pass;
     private $pdo;  
     private $error;
-    public function __construct($host = "mysql:host=localhost;dbname=pickbook", $user = "root", $pass=""){   
+    public function __construct($host = "mysql:host=localhost;dbname=pickbook", $user = "root", $pass="root"){   
         try{
             $this->pdo = new PDO($host, $user, $pass);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -1,4 +1,14 @@
+<?php
+session_start();
+if(empty($_SESSION['username']) || empty($_SESSION['logged_in']) || empty($_SESSION['IsAdmin'])){
+    header('location:logout.php');
+}
 
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,6 +24,7 @@
             <button onclick="showInsertSection();">Lägg till produkt</button>
             <button onclick="showOrderList();">Beställningar</button>
             <button onclick="showNewsLetterList();">Newsletter</button>
+            <button onclick="window.location.href='logout.php';">Logout</button>
 
 
         <section id="insertProduct">
