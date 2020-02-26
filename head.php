@@ -1,11 +1,8 @@
 <?php 
 session_start();
-//print_r($_SESSION);
+include('../pickbook/server/handlers/showProduct.php');
+include('cart.config.php');
 
-
-
-
-	include('../pickbook/server/handlers/showProduct.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +73,7 @@ session_start();
                 <a></a>
                 <a class="active" href="#home"><img src="./img/heart_@2x.png" style="width: 30px;" alt=""></a>
                 <a></a>
-                <a class="active" href="#home"><img src="./img/shopping_cart.png" style="width: 30px;" alt=""></a>
+                <a class="active" href="cart.php"><img src="./img/shopping_cart.png" style="width: 30px;" alt="">&nbsp;&nbsp;<?php echo $cart->getTotalItem(); ?></a>
             </div>
         </div>
     </header>
