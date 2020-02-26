@@ -1,7 +1,7 @@
 ## Grupp arbete Samer,
 
-## Admin login:
-Username: admin@pickbook.com
+**Admin login:**\
+Username: admin@pickbook.com\
 Password: 123456
 
 # Kravspecifikation på projektet:
