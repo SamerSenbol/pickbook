@@ -1,4 +1,11 @@
 ## Grupp arbete Samer,
+
+## Mitt arbete del i projektet är inloggning och cart system pluse checkout point.
+
+**Admin login:**\
+Username: admin@pickbook.com\
+Password: 123456
+
 # Kravspecifikation på projektet:
 
 • Alla sidor skall vara responsiva. (G)
