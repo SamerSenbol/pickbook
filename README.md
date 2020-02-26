@@ -1,7 +1,9 @@
 ## Grupp arbete Samer,
 
-## admin@pickbook.com
-## password:123456
+## Admin login:
+Username: admin@pickbook.com
+Password: 123456
+
 # Kravspecifikation på projektet:
 
 • Alla sidor skall vara responsiva. (G)
