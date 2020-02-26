@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 10, 2020 at 08:19 AM
--- Server version: 5.7.26
--- PHP Version: 7.3.8
+-- Generation Time: Feb 26, 2020 at 04:42 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `PICKBOOK`
+-- Database: `pickbook`
 --
 
 -- --------------------------------------------------------
@@ -61,17 +63,27 @@ CREATE TABLE `orders` (
   `total_price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`orderId`, `users_id`, `orderDate`, `shippingaddress`, `wight`, `total_price`) VALUES
+(6, 57014936, '2020-02-26', 'test, lextorps, Trollhättan, NY, Sweden, 1234567, samer@exampel.com, 0720203140', 0, 299),
+(7, 28965701, '2020-02-26', 'test2, lextorps, Trollhättan, NY, Sweden, 1234567, samer@exampel.com, 0720203140', 0, 300);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_detailIs`
+-- Table structure for table `order_detailis`
 --
 
-CREATE TABLE `order_detailIs` (
+CREATE TABLE `order_detailis` (
   `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `productId` int(11) NOT NULL,
   `sum` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `quantity` int(11) NOT NULL,
+  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -90,6 +102,14 @@ CREATE TABLE `products` (
   `image` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `product_name`, `description`, `quantity`, `unit_price`, `discount`, `image`) VALUES
+(1, 'test', 'tests', 68, 299, 20, 0x2e2f696d672f4944393738303535323137343034364032782e706e67),
+(2, 'My Products 2', 'My products 2 tests', 37, 300, 20, 0x2e2f696d672f4944393236313031365f4d4032782e706e67);
+
 -- --------------------------------------------------------
 
 --
@@ -97,19 +117,27 @@ CREATE TABLE `products` (
 --
 
 CREATE TABLE `users` (
-  `users_id` int(12) NOT NULL,
+  `users_id` int(11) NOT NULL,
   `fulName` varchar(70) NOT NULL,
   `IsAdmin` tinyint(1) NOT NULL,
   `email` text NOT NULL,
-  `phone` int(12) NOT NULL,
+  `phone` varchar(18) NOT NULL,
   `adress` text NOT NULL,
-  `postNu` int(12) NOT NULL,
-  `ZIPcode` int(12) NOT NULL,
+  `postNu` varchar(255) NOT NULL,
+  `ZIPcode` varchar(20) NOT NULL,
   `city` varchar(25) NOT NULL,
   `country` varchar(25) NOT NULL,
   `Password` text NOT NULL,
   `is_news_letter` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`users_id`, `fulName`, `IsAdmin`, `email`, `phone`, `adress`, `postNu`, `ZIPcode`, `city`, `country`, `Password`, `is_news_letter`) VALUES
+(13, 'Samer', 0, 'samer@pickbook.com', '0720203140', 'lextorps', '1234567', '1234567', 'Trollhättan', 'Sweden', 'd8913df37b24c97f28f840114d05bd110dbb2e44', 0),
+(14, 'Admin', 1, 'admin@pickbook.com', '0720203140', 'lextorps', '1234567', '1234567', 'Trollhättan', 'Sweden', 'd8913df37b24c97f28f840114d05bd110dbb2e44', 0);
 
 --
 -- Indexes for dumped tables
@@ -137,12 +165,11 @@ ALTER TABLE `orders`
   ADD KEY `users_id` (`users_id`);
 
 --
--- Indexes for table `order_detailIs`
+-- Indexes for table `order_detailis`
 --
-ALTER TABLE `order_detailIs`
-  ADD PRIMARY KEY (`order_id`,`productId`),
-  ADD KEY `order_id` (`order_id`,`productId`),
-  ADD KEY `order_id_2` (`order_id`);
+ALTER TABLE `order_detailis`
+  ADD PRIMARY KEY (`order_id`) USING BTREE,
+  ADD KEY `order_id` (`order_id`) USING BTREE;
 
 --
 -- Indexes for table `products`
@@ -170,13 +197,26 @@ ALTER TABLE `news_letters`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `order_detailis`
+--
+ALTER TABLE `order_detailis`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
