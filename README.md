@@ -1,5 +1,7 @@
 ## Grupp arbete Samer,
 
+## min arbete del i projektet är inloggning och cart system pluse checkout point.
+
 **Admin login:**\
 Username: admin@pickbook.com\
 Password: 123456
