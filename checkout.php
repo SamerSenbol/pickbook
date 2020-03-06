@@ -148,11 +148,13 @@ span.price {
       
         <div class="row">
           <div class="col-50">
-            <h3>Shipping Address</h3>
+            <h3>Placing your order</h3>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
             <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
             <input type="text" id="email" name="email" placeholder="john@example.com">
+            <label for="passwords"><i class="fa fa-envelope"></i> Password</label>
+            <input type="password" id="passwords" name="passwords" placeholder="">
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
             <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
             <label for="city"><i class="fa fa-institution"></i> City</label>

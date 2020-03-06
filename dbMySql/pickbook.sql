@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 26, 2020 at 04:42 PM
+-- Generation Time: Mar 06, 2020 at 12:01 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.7
 
@@ -69,7 +69,8 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`orderId`, `users_id`, `orderDate`, `shippingaddress`, `wight`, `total_price`) VALUES
 (6, 57014936, '2020-02-26', 'test, lextorps, Trollhättan, NY, Sweden, 1234567, samer@exampel.com, 0720203140', 0, 299),
-(7, 28965701, '2020-02-26', 'test2, lextorps, Trollhättan, NY, Sweden, 1234567, samer@exampel.com, 0720203140', 0, 300);
+(7, 28965701, '2020-02-26', 'test2, lextorps, Trollhättan, NY, Sweden, 1234567, samer@exampel.com, 0720203140', 0, 300),
+(8, 15, '2020-03-06', 'lextorps, Trollhättan, NY, 1234567,Sweden', 0, 719);
 
 -- --------------------------------------------------------
 
@@ -78,6 +79,7 @@ INSERT INTO `orders` (`orderId`, `users_id`, `orderDate`, `shippingaddress`, `wi
 --
 
 CREATE TABLE `order_detailis` (
+  `ids` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `productId` int(11) NOT NULL,
@@ -85,6 +87,14 @@ CREATE TABLE `order_detailis` (
   `quantity` int(11) NOT NULL,
   `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order_detailis`
+--
+
+INSERT INTO `order_detailis` (`ids`, `order_id`, `user_id`, `productId`, `sum`, `quantity`, `order_date`) VALUES
+(1, 8, 15, 2, 300, 1, '2020-03-06 11:56:10'),
+(2, 8, 15, 1, 419, 1, '2020-03-06 11:56:10');
 
 -- --------------------------------------------------------
 
@@ -107,8 +117,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `description`, `quantity`, `unit_price`, `discount`, `image`) VALUES
-(1, 'test', 'tests', 68, 299, 20, 0x2e2f696d672f4944393738303535323137343034364032782e706e67),
-(2, 'My Products 2', 'My products 2 tests', 37, 300, 20, 0x2e2f696d672f4944393236313031365f4d4032782e706e67);
+(1, 'Changing Times', 'By Jack Sheffield', 99, 419, 20, 0x2e2f696d672f4944393738303535323137343034364032782e706e67),
+(2, 'Cryogenic Systems', 'By Randall F. Barron', 119, 499, 20, 0x2e2f696d672f4944393236313031365f4d4032782e706e67);
 
 -- --------------------------------------------------------
 
@@ -137,7 +147,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`users_id`, `fulName`, `IsAdmin`, `email`, `phone`, `adress`, `postNu`, `ZIPcode`, `city`, `country`, `Password`, `is_news_letter`) VALUES
 (13, 'Samer', 0, 'samer@pickbook.com', '0720203140', 'lextorps', '1234567', '1234567', 'Trollhättan', 'Sweden', 'd8913df37b24c97f28f840114d05bd110dbb2e44', 0),
-(14, 'Admin', 1, 'admin@pickbook.com', '0720203140', 'lextorps', '1234567', '1234567', 'Trollhättan', 'Sweden', 'd8913df37b24c97f28f840114d05bd110dbb2e44', 0);
+(14, 'Admin', 1, 'admin@pickbook.com', '0720203140', 'lextorps', '1234567', '1234567', 'Trollhättan', 'Sweden', 'd8913df37b24c97f28f840114d05bd110dbb2e44', 0),
+(15, 'samer senbol', 0, 'samer@exampel.com', '0720203140', 'lextorps', '1234567', '1234567', 'Trollhättan', 'Sweden', 'cd9d379715cccc83fd8c8c2dc0730c6dd081bd35', 0);
 
 --
 -- Indexes for dumped tables
@@ -168,8 +179,7 @@ ALTER TABLE `orders`
 -- Indexes for table `order_detailis`
 --
 ALTER TABLE `order_detailis`
-  ADD PRIMARY KEY (`order_id`) USING BTREE,
-  ADD KEY `order_id` (`order_id`) USING BTREE;
+  ADD PRIMARY KEY (`ids`);
 
 --
 -- Indexes for table `products`
@@ -197,13 +207,13 @@ ALTER TABLE `news_letters`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `order_detailis`
 --
 ALTER TABLE `order_detailis`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ids` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -215,7 +225,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
