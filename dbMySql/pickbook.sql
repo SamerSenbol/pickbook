@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 06, 2020 at 12:01 PM
+-- Generation Time: Mar 06, 2020 at 02:22 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.7
 
@@ -68,9 +68,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orderId`, `users_id`, `orderDate`, `shippingaddress`, `wight`, `total_price`) VALUES
-(6, 57014936, '2020-02-26', 'test, lextorps, Trollhättan, NY, Sweden, 1234567, samer@exampel.com, 0720203140', 0, 299),
-(7, 28965701, '2020-02-26', 'test2, lextorps, Trollhättan, NY, Sweden, 1234567, samer@exampel.com, 0720203140', 0, 300),
-(8, 15, '2020-03-06', 'lextorps, Trollhättan, NY, 1234567,Sweden', 0, 719);
+(8, 15, '2020-03-06', 'lextorps, Trollhättan, NY, 1234567,Sweden', 0, 719),
+(9, 16, '2020-03-06', 'lextorps, Trollhättan, Västragotland, 46 342,Sweden', 0, 499);
 
 -- --------------------------------------------------------
 
@@ -94,7 +93,8 @@ CREATE TABLE `order_detailis` (
 
 INSERT INTO `order_detailis` (`ids`, `order_id`, `user_id`, `productId`, `sum`, `quantity`, `order_date`) VALUES
 (1, 8, 15, 2, 300, 1, '2020-03-06 11:56:10'),
-(2, 8, 15, 1, 419, 1, '2020-03-06 11:56:10');
+(2, 8, 15, 1, 419, 1, '2020-03-06 11:56:10'),
+(3, 9, 16, 2, 499, 1, '2020-03-06 14:16:47');
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,7 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`product_id`, `product_name`, `description`, `quantity`, `unit_price`, `discount`, `image`) VALUES
 (1, 'Changing Times', 'By Jack Sheffield', 99, 419, 20, 0x2e2f696d672f4944393738303535323137343034364032782e706e67),
-(2, 'Cryogenic Systems', 'By Randall F. Barron', 119, 499, 20, 0x2e2f696d672f4944393236313031365f4d4032782e706e67);
+(2, 'Cryogenic Systems', 'By Randall F. Barron', 118, 499, 20, 0x2e2f696d672f4944393236313031365f4d4032782e706e67);
 
 -- --------------------------------------------------------
 
@@ -146,9 +146,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`users_id`, `fulName`, `IsAdmin`, `email`, `phone`, `adress`, `postNu`, `ZIPcode`, `city`, `country`, `Password`, `is_news_letter`) VALUES
-(13, 'Samer', 0, 'samer@pickbook.com', '0720203140', 'lextorps', '1234567', '1234567', 'Trollhättan', 'Sweden', 'd8913df37b24c97f28f840114d05bd110dbb2e44', 0),
 (14, 'Admin', 1, 'admin@pickbook.com', '0720203140', 'lextorps', '1234567', '1234567', 'Trollhättan', 'Sweden', 'd8913df37b24c97f28f840114d05bd110dbb2e44', 0),
-(15, 'samer senbol', 0, 'samer@exampel.com', '0720203140', 'lextorps', '1234567', '1234567', 'Trollhättan', 'Sweden', 'cd9d379715cccc83fd8c8c2dc0730c6dd081bd35', 0);
+(15, 'samer senbol', 0, 'samer@exampel.com', '0720203140', 'lextorps', '1234567', '1234567', 'Trollhättan', 'Sweden', 'cd9d379715cccc83fd8c8c2dc0730c6dd081bd35', 0),
+(16, 'samer2', 0, 'samer2@exampel.com', '0720203140', 'lextorps', '46 342', '46 342', 'Trollhättan', 'Sweden', 'cd9d379715cccc83fd8c8c2dc0730c6dd081bd35', 0);
 
 --
 -- Indexes for dumped tables
@@ -207,13 +207,13 @@ ALTER TABLE `news_letters`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `order_detailis`
 --
 ALTER TABLE `order_detailis`
-  MODIFY `ids` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ids` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -225,7 +225,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
